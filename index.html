@@ -253,7 +253,7 @@ async function login(){
   const u = document.getElementById('user').value.trim();
   const p = document.getElementById('pass').value.trim();
   const errEl = document.getElementById('loginError');
-  if((u==='admin' && p==='wusul2026') || (u==='sirag' && p==='389100')){
+  if((u==='maddo' && p==='12345') || (u==='sirag' && p==='389100')){
     currentUser = {type:'manager', name:u, role:'manager'};
     localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser));
     errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden');
