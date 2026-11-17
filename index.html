@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>وصول - النظام القومي لإدارة الإغاثة | السودان</title>
-<!-- PWA - جاهز -->
 <meta name="theme-color" content="#1B5E20">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,11 +23,8 @@
 </style>
 </head>
 <body class="bg-[#f5f7f2]">
-
 <div id="netBar" class="fixed top-0 left-0 right-0 z-[999] text-center text-xs font-bold py-1 bg-green-600 text-white hidden">🟢 متصل - البيانات محفوظة في السحابة</div>
 <div id="offlineBar" class="fixed top-0 left-0 right-0 z-[999] text-center text-xs font-bold py-1 bg-orange-500 text-white hidden">🟠 أوفلاين - شغال بدون نت، البيانات حتتخزن في الجهاز وحتترفع لمن النت يرجع</div>
-
-<!-- Login -->
 <div id="loginScreen" class="fixed inset-0 login-bg z-[9999] flex items-center justify-center p-4">
 <div class="bg-white rounded-[2rem] p-8 w-full max-w-md shadow-2xl">
 <div class="text-center mb-6">
@@ -44,8 +40,6 @@
 <p class="text-[10px] text-gray-400 text-center mt-4">يعمل حتى بدون إنترنت - 18 ولاية<br>المدير: admin / wusul2026</p>
 </div>
 </div>
-
-<!-- App -->
 <div id="app" class="hidden">
 <header class="bg-white shadow-sm sticky top-0 z-50 pt-6">
 <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -66,7 +60,6 @@
 </div>
 </div>
 </header>
-
 <main class="max-w-7xl mx-auto p-4 space-y-4">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 <div class="bg-white p-5 rounded-2xl shadow-sm border"><p class="text-gray-500 text-xs">إجمالي الأسر</p><h2 id="totalFamilies" class="text-3xl font-black">0</h2><p class="text-[11px] text-green-600 mt-1">من 18 ولاية + المحفوظة أوفلاين</p></div>
@@ -74,7 +67,6 @@
 <div class="bg-white p-5 rounded-2xl shadow-sm border"><p class="text-gray-500 text-xs">بانتظار التأكيد</p><h2 id="pending" class="text-3xl font-black text-orange-500">0</h2></div>
 <div class="bg-[#1B5E20] p-5 rounded-2xl text-white"><p class="text-green-100 text-xs">تغطية النظام</p><h2 class="text-sm font-black">كل السودان</h2><p class="text-[11px] text-green-200 mt-1">يعمل بدون نت - من حلفا لنمولي</p></div>
 </div>
-
 <div class="grid md:grid-cols-3 gap-4">
 <div class="md:col-span-2 bg-white rounded-2xl shadow-sm border p-4">
 <div class="flex justify-between mb-3 items-center"><h3 class="font-bold text-sm">🗺️ خريطة التوزيع القومية</h3>
@@ -87,7 +79,6 @@
 <div id="recentList" class="space-y-2 max-h-[400px] overflow-auto text-xs"><p class="text-gray-400 text-center py-10">لا توجد بيانات</p></div>
 </div>
 </div>
-
 <div class="bg-white rounded-2xl shadow-sm border p-4">
 <div class="flex flex-col md:flex-row justify-between gap-3 mb-4">
 <h3 class="font-bold text-sm">📋 سجل الأسر - كل السودان</h3>
@@ -106,8 +97,6 @@
 <footer class="text-center text-[11px] text-gray-400 py-6">وصول - لكل السودانيين - تم التطوير بواسطة سراج - 2026 - يعمل أونلاين وأوفلاين - PWA</footer>
 </main>
 </div>
-
-<!-- Add Modal -->
 <div id="addModal" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-center justify-center p-4">
 <div class="bg-white rounded-2xl p-6 w-full max-w-md">
 <h3 id="modalTitle" class="font-bold mb-4">إضافة أسرة جديدة</h3>
@@ -122,8 +111,6 @@
 <div class="flex gap-2"><button onclick="saveFamily()" class="flex-1 bg-[#1B5E20] text-white py-2 rounded-xl text-sm">حفظ البيانات</button><button onclick="closeAddModal()" class="flex-1 bg-gray-100 py-2 rounded-xl text-sm">إلغاء</button></div>
 </div>
 </div>
-
-<!-- Admins Modal -->
 <div id="adminsModal" class="fixed inset-0 bg-black/50 z-[65] hidden flex items-center justify-center p-4">
 <div class="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-auto">
 <div class="flex justify-between items-center mb-4"><h3 class="font-black text-lg">👥 إدارة الأدمن - المدير فقط</h3><button onclick="closeAdminsModal()" class="bg-gray-100 px-3 py-1 rounded-full text-sm">✕</button></div>
@@ -140,8 +127,6 @@
 <div id="adminsList" class="space-y-2 text-sm"></div>
 </div>
 </div>
-
-<!-- Print Modal -->
 <div id="printCardModal" class="fixed inset-0 bg-black/50 z-[70] hidden flex items-center justify-center p-4">
 <div class="bg-white rounded-2xl p-6 w-full max-w-sm text-center shadow-xl relative">
 <div class="border-2 border-dashed border-[#1B5E20] p-4 rounded-xl mb-4 bg-green-50/30">
@@ -153,73 +138,24 @@
 <div class="flex gap-2"><button onclick="window.print()" class="flex-1 bg-[#1B5E20] text-white py-2 rounded-xl text-xs font-bold">طباعة 🖨️</button><button onclick="closePrintModal()" class="flex-1 bg-gray-100 py-2 rounded-xl text-xs">إغلاق</button></div>
 </div>
 </div>
-
 <script>
-// ===== PWA داخل نفس الملف - لا يحتاج manifest.json ولا sw.js منفصلين =====
-// 1. Manifest ديناميكي
-const manifestData = {
-  name: "وصول - النظام القومي لإدارة الإغاثة",
-  short_name: "وصول",
-  description: "النظام القومي الموحد للإغاثة - لكل السودان - يعمل بدون إنترنت",
-  lang: "ar", dir: "rtl",
-  start_url: "./index.html",
-  display: "standalone",
-  background_color: "#1B5E20",
-  theme_color: "#1B5E20",
-  orientation: "portrait",
-  icons: [
-    { src: "icon-192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
-    { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }
-  ]
-};
+const manifestData = { name: "وصول - النظام القومي لإدارة الإغاثة", short_name: "وصول", description: "النظام القومي الموحد للإغاثة - لكل السودان - يعمل بدون إنترنت", lang: "ar", dir: "rtl", start_url: "./index.html", display: "standalone", background_color: "#1B5E20", theme_color: "#1B5E20", orientation: "portrait", icons: [ { src: "icon-192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" }, { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" } ] };
 const manifestBlob = new Blob([JSON.stringify(manifestData)], {type: 'application/json'});
 const manifestURL = URL.createObjectURL(manifestBlob);
-const link = document.createElement('link');
-link.rel = 'manifest';
-link.href = manifestURL;
-document.head.appendChild(link);
-
-// 2. Service Worker ديناميكي - بيخلي التطبيق يشتغل أوفلاين ويتثبت
+const link = document.createElement('link'); link.rel = 'manifest'; link.href = manifestURL; document.head.appendChild(link);
 if ('serviceWorker' in navigator) {
-  const swCode = `
-    const CACHE = 'wusul-v2';
-    self.addEventListener('install', e => { self.skipWaiting(); });
-    self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.map(k => k !== CACHE ? caches.delete(k) : null)))); self.clients.claim(); });
-    self.addEventListener('fetch', e => {
-      if (e.request.url.includes('supabase.co')) return;
-      if (e.request.method !== 'GET') return;
-      e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-    });
-  `;
-  const swBlob = new Blob([swCode], {type: 'text/javascript'});
-  const swURL = URL.createObjectURL(swBlob);
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register(swURL).then(()=>console.log('PWA جاهز ✅')).catch(e=>console.log(e));
-  });
+  const swCode = ` const CACHE = 'wusul-v2'; self.addEventListener('install', e => { self.skipWaiting(); }); self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.map(k => k !== CACHE ? caches.delete(k) : null)))); self.clients.claim(); }); self.addEventListener('fetch', e => { if (e.request.url.includes('supabase.co')) return; if (e.request.method !== 'GET') return; e.respondWith(fetch(e.request).catch(() => caches.match(e.request))); }); `;
+  const swBlob = new Blob([swCode], {type: 'text/javascript'}); const swURL = URL.createObjectURL(swBlob);
+  window.addEventListener('load', () => { navigator.serviceWorker.register(swURL).then(()=>console.log('PWA جاهز ✅')).catch(e=>console.log(e)); });
 }
-
-// 3. زر التثبيت
 let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); deferredPrompt = e;
-  if(document.getElementById('installBtn')) return;
-  const btn = document.createElement('button');
-  btn.id = 'installBtn';
-  btn.innerText = '📱 تثبيت تطبيق وصول في التلفون';
-  btn.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 z-[9999] bg-[#1B5E20] text-white px-5 py-3 rounded-full font-bold shadow-2xl text-sm';
-  btn.onclick = async () => { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if(outcome === 'accepted') btn.remove(); };
-  document.body.appendChild(btn);
-});
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if(document.getElementById('installBtn')) return; const btn = document.createElement('button'); btn.id = 'installBtn'; btn.innerText = '📱 تثبيت تطبيق وصول في التلفون'; btn.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 z-[9999] bg-[#1B5E20] text-white px-5 py-3 rounded-full font-bold shadow-2xl text-sm'; btn.onclick = async () => { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if(outcome === 'accepted') btn.remove(); }; document.body.appendChild(btn); });
 </script>
-
 <script>
 const SUPABASE_URL = "https://lnkxakptqqyrrqmfnpoe.supabase.co";
 const SUPABASE_KEY = "sb_publishable_eYODW4rFLkBWmCYxWA5aNA_FS5Munx1";
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-let tempFingerprint = false;
-let currentUser = null;
-let allFamiliesData = [];
-
+let tempFingerprint = false; let currentUser = null; let allFamiliesData = [];
 function getLocalFamilies(){ try{ return JSON.parse(localStorage.getItem('wusul_families')||'[]'); }catch(e){ return []; } }
 function saveLocalFamilies(list){ localStorage.setItem('wusul_families', JSON.stringify(list)); }
 function getPending(){ try{ return JSON.parse(localStorage.getItem('wusul_pending')||'[]'); }catch(e){ return []; } }
@@ -227,124 +163,98 @@ function savePending(list){ localStorage.setItem('wusul_pending', JSON.stringify
 function updateNetUI(){ const online = navigator.onLine; document.getElementById('netBar').classList.toggle('hidden', !online); document.getElementById('offlineBar').classList.toggle('hidden', online); }
 window.addEventListener('online', ()=>{ updateNetUI(); syncNow(); });
 window.addEventListener('offline', updateNetUI);
-
+// ===== منع التكرار - جديد =====
+function normalizePhone(p){ return String(p||'').trim().replace(/[\s\-]/g,''); }
+function dedupeByPhone(list){ const seen=new Set(); return (list||[]).filter(f=>{ let p=normalizePhone(f.phone); if(!p) return true; if(seen.has(p)) return false; seen.add(p); return true; }); }
+function phoneExists(phone){ let p=normalizePhone(phone); if(!p) return false; let all=[...getPending(), ...getLocalFamilies(), ...allFamiliesData]; return all.some(f=>normalizePhone(f.phone)===p); }
 async function syncNow(){
-  const pending = getPending();
+  let pending = dedupeByPhone(getPending()); savePending(pending);
   if(!pending.length){ updateNetUI(); return; }
-  if(!navigator.onLine) { alert('ما فيه نت هسع، البيانات محفوظة في الجهاز، حتترفع لمن النت يرجع'); return; }
-  let success = 0, failed = 0;
+  if(!navigator.onLine){ alert('ما فيه نت هسع، البيانات محفوظة في الجهاز، حتترفع لمن النت يرجع'); return; }
+  let success=0, skipped=0, failed=0; let remaining=[];
   for(const item of pending){
-    const { error } = await supabaseClient.from('families').insert([{name:item.name, phone:item.phone, state:item.state, members:item.members, status:'pending', classification:item.classification, fingerprint_verified:item.fingerprint_verified}]);
-    if(!error) success++; else failed++;
+    try{
+      const { data: found } = await supabaseClient.from('families').select('id').eq('phone', String(item.phone).trim()).maybeSingle();
+      if(found){ skipped++; continue; }
+      const { error } = await supabaseClient.from('families').insert([{name:item.name, phone:item.phone, state:item.state, members:item.members, status:'pending', classification:item.classification, fingerprint_verified:item.fingerprint_verified}]);
+      if(!error) success++; else { failed++; remaining.push(item); }
+    }catch(e){ failed++; remaining.push(item); }
   }
-  if(failed===0){ savePending([]); alert('تمت المزامنة ✅ تم رفع '+success+' أسرة للسحابة'); loadData(); }
+  savePending(remaining);
+  saveLocalFamilies(dedupeByPhone(getLocalFamilies()));
+  if(failed===0){ alert('تمت المزامنة ✅ تم رفع '+success+' - وتجاهل '+skipped+' مكرر'); loadData(); }
   else { alert('تم رفع '+success+'، وباقي '+failed+' لسه معلقات، حاول تاني'); }
 }
-
-function applyPermissions(){
-  if(!currentUser) return;
-  const isManager = currentUser.type === 'manager';
-  document.getElementById('btnAdmins').classList.toggle('hidden', !isManager);
-  document.getElementById('btnAddFamily').style.display = (isManager || currentUser.role==='add_search') ? '' : 'none';
-  document.getElementById('whoami').innerText = isManager ? '👑 مدخل كمدير عام' : (currentUser.role==='view_only' ? '👁️ مدخل كأدمن - عرض وبحث فقط' : '➕ مدخل كأدمن - إضافة وبحث');
-}
-
+function applyPermissions(){ if(!currentUser) return; const isManager = currentUser.type === 'manager'; document.getElementById('btnAdmins').classList.toggle('hidden', !isManager); document.getElementById('btnAddFamily').style.display = (isManager || currentUser.role==='add_search') ? '' : 'none'; document.getElementById('whoami').innerText = isManager ? '👑 مدخل كمدير عام' : (currentUser.role==='view_only' ? '👁️ مدخل كأدمن - عرض وبحث فقط' : '➕ مدخل كأدمن - إضافة وبحث'); }
 async function login(){
-  const u = document.getElementById('user').value.trim();
-  const p = document.getElementById('pass').value.trim();
-  const errEl = document.getElementById('loginError');
-  if((u==='maddo' && p==='12345') || (u==='sirag' && p==='389100')){
-    currentUser = {type:'manager', name:u, role:'manager'};
-    localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser));
-    errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden');
-    applyPermissions(); initMap(); loadData(); updateNetUI(); return;
-  }
-  if(!navigator.onLine){
-    const localAdmins = JSON.parse(localStorage.getItem('wusul_admins')||'[]');
-    const found = localAdmins.find(a=>a.username===u && a.password===p);
-    if(found){ currentUser={type:'admin', name:found.name, role:found.role}; localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser)); errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); applyPermissions(); initMap(); loadData(); updateNetUI(); return; }
-    else { errEl.classList.remove('hidden'); return; }
-  }
-  try{
-    const { data } = await supabaseClient.from('admins').select('*').eq('username', u).eq('password', p).maybeSingle();
-    if(data){
-      currentUser = {type:'admin', name:data.name||u, role:data.role||'view_only'};
-      let localAdmins = JSON.parse(localStorage.getItem('wusul_admins')||'[]');
-      if(!localAdmins.find(a=>a.username===u)) { localAdmins.push({username:u, password:p, name:data.name, role:data.role}); localStorage.setItem('wusul_admins', JSON.stringify(localAdmins)); }
-      localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser));
-      errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); applyPermissions(); initMap(); loadData(); updateNetUI(); return;
-    }
-  }catch(e){}
+  const u = document.getElementById('user').value.trim(); const p = document.getElementById('pass').value.trim(); const errEl = document.getElementById('loginError');
+  if((u==='maddo' && p==='12345') || (u==='sirag' && p==='389100')){ currentUser = {type:'manager', name:u, role:'manager'}; localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser)); errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); applyPermissions(); initMap(); loadData(); updateNetUI(); return; }
+  if(!navigator.onLine){ const localAdmins = JSON.parse(localStorage.getItem('wusul_admins')||'[]'); const found = localAdmins.find(a=>a.username===u && a.password===p); if(found){ currentUser={type:'admin', name:found.name, role:found.role}; localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser)); errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); applyPermissions(); initMap(); loadData(); updateNetUI(); return; } else { errEl.classList.remove('hidden'); return; } }
+  try{ const { data } = await supabaseClient.from('admins').select('*').eq('username', u).eq('password', p).maybeSingle(); if(data){ currentUser = {type:'admin', name:data.name||u, role:data.role||'view_only'}; let localAdmins = JSON.parse(localStorage.getItem('wusul_admins')||'[]'); if(!localAdmins.find(a=>a.username===u)) { localAdmins.push({username:u, password:p, name:data.name, role:data.role}); localStorage.setItem('wusul_admins', JSON.stringify(localAdmins)); } localStorage.setItem('wusul_auth','1'); localStorage.setItem('wusul_user', JSON.stringify(currentUser)); errEl.classList.add('hidden'); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); applyPermissions(); initMap(); loadData(); updateNetUI(); return; } }catch(e){}
   errEl.classList.remove('hidden');
 }
-
 function logout(){ localStorage.removeItem('wusul_auth'); localStorage.removeItem('wusul_user'); location.reload(); }
 if(localStorage.getItem('wusul_auth')){ try{ currentUser = JSON.parse(localStorage.getItem('wusul_user')||'null') || {type:'manager', name:'admin', role:'manager'}; }catch(e){ currentUser={type:'manager', name:'admin', role:'manager'}; } document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); }
-
 let map;
 function initMap(){ if(map){ map.invalidateSize(); return; } map = L.map('map').setView([15.9, 30.2], 5.5); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map); }
-
 function renderFamilies(data){
+  data = dedupeByPhone(data);
   allFamiliesData = data;
   document.getElementById('totalFamilies').innerText=data.length;
   document.getElementById('distributed').innerText=data.filter(f=>f.fingerprint_verified).length;
   document.getElementById('pending').innerText=data.filter(f=>!f.fingerprint_verified).length;
   const isManager = currentUser && currentUser.type==='manager';
-  document.getElementById('familyTable').innerHTML = data.length ? data.map(f=>{
-    const qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(f.id||f.name)}`;
-    let actions = isManager ? `<button onclick="openPrintModal('${f.id}')" class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-[10px] font-bold">🖨️ طباعة</button><button onclick="openEditModal('${f.id}')" class="bg-amber-50 text-amber-600 px-2 py-1 rounded text-[10px] font-bold">✏️ تعديل</button><button onclick="deleteFamily('${f.id}')" class="bg-red-50 text-red-600 px-2 py-1 rounded text-[10px] font-bold">🗑️ حذف</button>` : `<span class="text-gray-400 text-[10px]">عرض فقط</span>`;
-    const offlineBadge = f._offline ? `<span class="bg-orange-100 text-orange-600 px-1 rounded text-[9px]">أوفلاين - بانتظار المزامنة</span>` : '';
-    return `<tr class="border-t hover:bg-gray-50"><td class="p-3"><div class="font-bold">${f.name} ${offlineBadge}</div><div class="text-[10px] text-gray-500">${f.phone||''} - ${f.members||0} فرد</div></td><td class="p-3">${f.state||'الخرطوم'}</td><td class="p-3">${f.classification||f.class||'-'}</td><td class="p-3"><img src="${qrUrl}" class="w-12 h-12 border rounded"></td><td class="p-3"><span class="px-2 py-1 rounded-full text-[10px] ${f.fingerprint_verified?'bg-green-100 text-green-700':'bg-gray-100 text-gray-500'}">${f.fingerprint_verified?'✅ مؤكدة':'⏳ لم تؤخذ'}</span></td><td class="p-3"><span class="px-2 py-1 rounded-full text-[10px] ${f.status=='distributed'?'bg-green-100 text-green-700':'bg-orange-100 text-orange-600'}">${f.status=='distributed'?'تم':'انتظار'}</span></td><td class="p-3 text-center">${actions}</td></tr>`;
-  }).join('') : `<tr><td colspan="7" class="p-8 text-center text-gray-400">لا توجد بيانات</td></tr>`;
+  document.getElementById('familyTable').innerHTML = data.length ? data.map(f=>{ const qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(f.id||f.name)}`; let actions = isManager ? `<button onclick="openPrintModal('${f.id}')" class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-[10px] font-bold">🖨️ طباعة</button><button onclick="openEditModal('${f.id}')" class="bg-amber-50 text-amber-600 px-2 py-1 rounded text-[10px] font-bold">✏️ تعديل</button><button onclick="deleteFamily('${f.id}')" class="bg-red-50 text-red-600 px-2 py-1 rounded text-[10px] font-bold">🗑️ حذف</button>` : `<span class="text-gray-400 text-[10px]">عرض فقط</span>`; const offlineBadge = f._offline ? `<span class="bg-orange-100 text-orange-600 px-1 rounded text-[9px]">أوفلاين - بانتظار المزامنة</span>` : ''; return `<tr class="border-t hover:bg-gray-50"><td class="p-3"><div class="font-bold">${f.name} ${offlineBadge}</div><div class="text-[10px] text-gray-500">${f.phone||''} - ${f.members||0} فرد</div></td><td class="p-3">${f.state||'الخرطوم'}</td><td class="p-3">${f.classification||f.class||'-'}</td><td class="p-3"><img src="${qrUrl}" class="w-12 h-12 border rounded"></td><td class="p-3"><span class="px-2 py-1 rounded-full text-[10px] ${f.fingerprint_verified?'bg-green-100 text-green-700':'bg-gray-100 text-gray-500'}">${f.fingerprint_verified?'✅ مؤكدة':'⏳ لم تؤخذ'}</span></td><td class="p-3"><span class="px-2 py-1 rounded-full text-[10px] ${f.status=='distributed'?'bg-green-100 text-green-700':'bg-orange-100 text-orange-600'}">${f.status=='distributed'?'تم':'انتظار'}</span></td><td class="p-3 text-center">${actions}</td></tr>`; }).join('') : `<tr><td colspan="7" class="p-8 text-center text-gray-400">لا توجد بيانات</td></tr>`;
   document.getElementById('recentList').innerHTML=data.slice(0,10).map(f=>`<div class="p-2 bg-gray-50 rounded-xl flex justify-between"><div><div class="font-bold">${f.name} ${f._offline?'🟠':''}</div><div class="text-[10px] text-gray-500">${f.state||'الخرطوم'} - ${f.classification||''}</div></div></div>`).join('');
   if(map) data.forEach(f=>{ if(f.lat&&f.lng) L.marker([f.lat,f.lng]).addTo(map).bindPopup(`${f.name} - ${f.state}`); });
 }
-
 async function loadData(){
   if(navigator.onLine){
     try{
       const { data } = await supabaseClient.from('families').select('*').order('created_at',{ascending:false}).limit(200);
-      if(data && data.length){ saveLocalFamilies(data); }
-      const localPending = getPending().map(p=>({...p, _offline:true, id:'offline-'+p._localId}));
-      const combined = [...localPending, ...(data||[])];
-      renderFamilies(combined); return;
+      if(data && data.length){ saveLocalFamilies(dedupeByPhone(data)); }
+      const localPending = dedupeByPhone(getPending()).map(p=>({...p, _offline:true, id:'offline-'+p._localId}));
+      const cloud = dedupeByPhone(data||[]);
+      const cloudOnly = cloud.filter(c => !localPending.some(p => normalizePhone(p.phone)===normalizePhone(c.phone)));
+      renderFamilies([...localPending, ...cloudOnly]); return;
     }catch(e){ console.log(e); }
   }
-  const local = getLocalFamilies();
-  const pending = getPending().map(p=>({...p, _offline:true, id:'offline-'+p._localId}));
-  renderFamilies([...pending, ...local]);
+  const local = dedupeByPhone(getLocalFamilies());
+  const pending = dedupeByPhone(getPending()).map(p=>({...p, _offline:true, id:'offline-'+p._localId}));
+  const localOnly = local.filter(l => !pending.some(p => normalizePhone(p.phone)===normalizePhone(l.phone)));
+  renderFamilies([...pending, ...localOnly]);
 }
-
 function filterTable(){ const q=document.getElementById('search').value.toLowerCase(); const cf=document.getElementById('classFilter').value; document.querySelectorAll('#familyTable tr').forEach(r=>{ r.style.display=((r.innerText.toLowerCase().includes(q)) && (!cf || r.innerText.includes(cf)))?'':'none'; }); }
 function filterByState(){ document.getElementById('search').value=document.getElementById('stateFilter').value; filterTable(); }
-
 function openAddModal(){ if(currentUser && currentUser.role==='view_only'){ alert('صلاحيتك عرض وبحث فقط'); return; } document.getElementById('modalTitle').innerText='إضافة أسرة جديدة'; document.getElementById('fId').value=''; document.getElementById('fName').value=''; document.getElementById('fPhone').value=''; document.getElementById('fMembers').value=''; document.getElementById('fClass').value='اليتيمة'; tempFingerprint=false; document.getElementById('fingerBtn').innerText='👆 اضغط لالتقاط البصمة'; document.getElementById('fingerStatus').innerText='لم يتم التقاط البصمة بعد'; document.getElementById('addModal').classList.remove('hidden'); }
 function openEditModal(id){ if(currentUser && currentUser.type!=='manager'){ alert('التعديل للمدير فقط'); return; } const f=allFamiliesData.find(x=>x.id==id); if(!f) return; document.getElementById('modalTitle').innerText='تعديل بيانات الأسرة'; document.getElementById('fId').value=f.id; document.getElementById('fName').value=f.name||''; document.getElementById('fPhone').value=f.phone||''; document.getElementById('fState').value=f.state||'الخرطوم'; document.getElementById('fMembers').value=f.members||1; document.getElementById('fClass').value=f.classification||'اليتيمة'; tempFingerprint=!!f.fingerprint_verified; document.getElementById('addModal').classList.remove('hidden'); }
 function closeAddModal(){ document.getElementById('addModal').classList.add('hidden'); }
 function captureFingerprint(){ const b=document.getElementById('fingerBtn'); b.innerText='⏳ جاري التقاط البصمة...'; setTimeout(()=>{ tempFingerprint=true; b.innerText='✅ تم التقاط البصمة بنجاح'; b.style.background='#dcfce7'; document.getElementById('fingerStatus').innerText='✅ تم حفظ البصمة'; },800); }
-
 async function saveFamily(){
   if(currentUser && currentUser.role==='view_only'){ alert('صلاحيتك عرض وبحث فقط'); return; }
-  const id=document.getElementById('fId').value; const name=document.getElementById('fName').value; const phone=document.getElementById('fPhone').value; const state=document.getElementById('fState').value; const members=document.getElementById('fMembers').value; const classification=document.getElementById('fClass').value; const fingerprint_verified=tempFingerprint;
+  const id=document.getElementById('fId').value; const name=document.getElementById('fName').value.trim(); const phone=document.getElementById('fPhone').value.trim(); const state=document.getElementById('fState').value; const members=document.getElementById('fMembers').value; const classification=document.getElementById('fClass').value; const fingerprint_verified=tempFingerprint;
   if(!name) return alert('اكتب الاسم');
+  if(!phone) return alert('اكتب رقم الهاتف - عشان ما يتكرر');
+  if(!id && phoneExists(phone)){ return alert('⚠️ الأسرة دي مسجلة قبل كده بنفس رقم التلفون\nما ممكن تتسجل مرتين'); }
   if(!navigator.onLine && !id){
     const pending=getPending(); const newItem={_localId: Date.now(), name, phone, state, members:parseInt(members)||1, classification, fingerprint_verified, status:'pending', created_at:new Date().toISOString()};
-    pending.push(newItem); savePending(pending);
-    const local=getLocalFamilies(); local.unshift(newItem); saveLocalFamilies(local);
+    pending.push(newItem); savePending(dedupeByPhone(pending));
     closeAddModal(); loadData(); alert('تم الحفظ أوفلاين 🟠\nاتحفظ في الجهاز، وحيترفع تلقائياً لمن النت يرجع - دوس مزامنة'); return;
   }
   if(id){
     const { error } = await supabaseClient.from('families').update({name, phone, state, members:parseInt(members)||1, classification, fingerprint_verified}).eq('id', id);
     if(error) alert('خطأ: '+error.message); else { closeAddModal(); loadData(); alert('تم التعديل ✅'); }
   } else {
+    const { data: found } = await supabaseClient.from('families').select('id').eq('phone', phone).maybeSingle();
+    if(found){ return alert('⚠️ الرقم ده مسجل قبل كده في السحابة، ما ممكن يتسجل تاني'); }
     const { error } = await supabaseClient.from('families').insert([{name, phone, state, members:parseInt(members)||1, status:'pending', classification, fingerprint_verified}]);
     if(error){
-      const pending=getPending(); pending.push({_localId:Date.now(), name, phone, state, members:parseInt(members)||1, classification, fingerprint_verified, status:'pending'}); savePending(pending); closeAddModal(); loadData(); alert('النت قطع، اتحفظ أوفلاين وحيترفع بعدين 🟠');
+      if(String(error.message||'').includes('duplicate') || error.code==='23505'){ alert('⚠️ الرقم ده مسجل قبل كده'); return; }
+      const pending=getPending(); pending.push({_localId:Date.now(), name, phone, state, members:parseInt(members)||1, classification, fingerprint_verified, status:'pending'}); savePending(dedupeByPhone(pending)); closeAddModal(); loadData(); alert('النت قطع، اتحفظ أوفلاين وحيترفع بعدين 🟠');
     } else { closeAddModal(); loadData(); alert('تمت الإضافة ✅'); }
   }
 }
-
-async function deleteFamily(id){ if(currentUser && currentUser.type!=='manager'){ alert('الحذف للمدير فقط'); return; } if(!confirm('متأكد تحذف؟')) return; const { error } = await supabaseClient.from('families').delete().eq('id', id); if(error) alert(error.message); else { loadData(); alert('تم الحذف'); } }
+async function deleteFamily(id){ if(currentUser && currentUser.type!=='manager'){ alert('الحذف للمدير فقط'); return; } if(!confirm('متأكد تحذف؟')) return; if(String(id).startsWith('offline-')){ let p=getPending().filter(x=>'offline-'+x._localId!==id); savePending(p); loadData(); return; } const { error } = await supabaseClient.from('families').delete().eq('id', id); if(error) alert(error.message); else { loadData(); alert('تم الحذف'); } }
 async function openAdminsModal(){ if(!currentUser || currentUser.type!=='manager'){ alert('للمدير فقط'); return; } document.getElementById('adminsModal').classList.remove('hidden'); loadAdmins(); }
 function closeAdminsModal(){ document.getElementById('adminsModal').classList.add('hidden'); }
 async function loadAdmins(){ const list=document.getElementById('adminsList'); const { data, error } = await supabaseClient.from('admins').select('*').order('created_at',{ascending:false}); if(error){ list.innerHTML=`<p class="text-red-500 text-xs">خطأ: ${error.message}</p>`; return; } if(!data||!data.length){ list.innerHTML=`<p class="text-gray-400 text-center py-4 text-xs">لا يوجد أدمن بعد</p>`; return; } list.innerHTML=data.map(a=>`<div class="border rounded-xl p-3 flex justify-between items-center"><div><b>${a.name||'-'}</b> <span class="px-2 py-1 rounded-full text-[10px] ${a.role==='add_search'?'bg-green-100 text-green-700':'bg-blue-100 text-blue-700'}">${a.role==='add_search'?'➕ إضافة وبحث':'👁️ عرض وبحث فقط'}</span><br><span class="text-gray-400 text-xs">👤 ${a.username||'-'} | 📞 ${a.phone||'-'}</span></div><button onclick="deleteAdmin('${a.id}')" class="bg-red-50 text-red-600 px-2 py-1 rounded text-[10px] font-bold">🗑️ حذف</button></div>`).join(''); }
@@ -353,7 +263,7 @@ async function deleteAdmin(id){ if(!confirm('متأكد تحذف الأدمن؟'
 function openPrintModal(id){ if(currentUser && currentUser.type!=='manager'){ alert('الطباعة للمدير فقط'); return; } const f=allFamiliesData.find(x=>x.id==id); if(!f) return; document.getElementById('cName').innerText=f.name||'-'; document.getElementById('cState').innerText=f.state||'-'; document.getElementById('cClass').innerText=f.classification||'-'; document.getElementById('cPhone').innerText=f.phone||'-'; document.getElementById('cMembers').innerText=(f.members||1)+' أفراد'; document.getElementById('cardQRContainer').innerHTML=`<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(f.id||f.name)}" class="w-24 h-24 border rounded mx-auto">`; document.getElementById('printCardModal').classList.remove('hidden'); }
 function closePrintModal(){ document.getElementById('printCardModal').classList.add('hidden'); }
 function exportExcel(){ alert('تصدير Excel - البيانات الحالية: '+allFamiliesData.length+' أسرة'); }
-window.onload=()=>{ updateNetUI(); savePending(getPending()); if(localStorage.getItem('wusul_auth')){ applyPermissions(); initMap(); loadData(); } }
+window.onload=()=>{ updateNetUI(); savePending(dedupeByPhone(getPending())); if(localStorage.getItem('wusul_auth')){ applyPermissions(); initMap(); loadData(); } }
 </script>
 </body>
 </html>
